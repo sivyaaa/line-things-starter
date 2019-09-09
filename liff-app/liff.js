@@ -1,5 +1,5 @@
 // User service UUID: Change this to your generated service UUID
-const USER_SERVICE_UUID         = 'e54f4df6-044e-48ea-a4f1-ac45fb2d1c59'; // LED, Button
+const USER_SERVICE_UUID         = '0d7aa4ef-7e3d-4ba8-85d5-06172d17b1a1'; // LED, Button
 // User service characteristics
 const LED_CHARACTERISTIC_UUID   = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
 const BTN_CHARACTERISTIC_UUID   = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
@@ -104,7 +104,7 @@ function uiToggleLoadingAnimation(isLoading) {
     }
 }
 
-function uiStatusError(message, showLoadingAnimation) {
+function uiStatusError(message, showLoadingAnimation, input) {
     uiToggleLoadingAnimation(showLoadingAnimation);
 
     const elStatus = document.getElementById("status");
@@ -114,7 +114,7 @@ function uiStatusError(message, showLoadingAnimation) {
     elStatus.classList.remove("success");
     elStatus.classList.remove("inactive");
     elStatus.classList.add("error");
-    elStatus.innerText = message;
+    elStatus.innerText = input + '\n' + message;
 
     // Hide controls
     elControls.classList.add("hidden");
@@ -129,14 +129,14 @@ function makeErrorMsg(errorObj) {
 // -------------- //
 
 function initializeApp() {
-    liff.init(() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
+    liff.init(() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false, 'initializeApp'));
 }
 
 function initializeLiff() {
     liff.initPlugins(['bluetooth']).then(() => {
         liffCheckAvailablityAndDo(() => liffRequestDevice());
     }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
+        uiStatusError(makeErrorMsg(error), false, 'initializeLiff');
     });
 }
 
@@ -147,11 +147,11 @@ function liffCheckAvailablityAndDo(callbackIfAvailable) {
             uiToggleDeviceConnected(false);
             callbackIfAvailable();
         } else {
-            uiStatusError("Bluetooth not available", true);
+            uiStatusError("Bluetooth not available", true,);
             setTimeout(() => liffCheckAvailablityAndDo(callbackIfAvailable), 10000);
         }
     }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
+        uiStatusError(makeErrorMsg(error), false, 'liffCheckAvailablityAndDo');
     });;
 }
 
@@ -159,7 +159,7 @@ function liffRequestDevice() {
     liff.bluetooth.requestDevice().then(device => {
         liffConnectToDevice(device);
     }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
+        uiStatusError(makeErrorMsg(error), false, 'liffRequestDevice');
     });
 }
 
@@ -175,12 +175,12 @@ function liffConnectToDevice(device) {
         device.gatt.getPrimaryService(USER_SERVICE_UUID).then(service => {
             liffGetUserService(service);
         }).catch(error => {
-            uiStatusError(makeErrorMsg(error), false);
+            uiStatusError(makeErrorMsg(error), false, 'liffGetUserService');
         });
         device.gatt.getPrimaryService(PSDI_SERVICE_UUID).then(service => {
             liffGetPSDIService(service);
         }).catch(error => {
-            uiStatusError(makeErrorMsg(error), false);
+            uiStatusError(makeErrorMsg(error), false, 'liffGetPSDIService');
         });
 
         // Device disconnect callback
@@ -203,7 +203,7 @@ function liffConnectToDevice(device) {
 
         device.addEventListener('gattserverdisconnected', disconnectCallback);
     }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
+        uiStatusError(makeErrorMsg(error), false, 'addEventListener');
     });
 }
 
@@ -212,7 +212,7 @@ function liffGetUserService(service) {
     service.getCharacteristic(BTN_CHARACTERISTIC_UUID).then(characteristic => {
         liffGetButtonStateCharacteristic(characteristic);
     }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
+        uiStatusError(makeErrorMsg(error), false, 'liffGetButtonStateCharacteristic');
     });
 
     // Toggle LED
@@ -222,7 +222,7 @@ function liffGetUserService(service) {
         // Switch off by default
         liffToggleDeviceLedState(false);
     }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
+        uiStatusError(makeErrorMsg(error), false, 'liffToggleDeviceLedState');
     });
 }
 
@@ -236,7 +236,7 @@ function liffGetPSDIService(service) {
             .reduce((output, byte) => output + ("0" + byte.toString(16)).slice(-2), "");
         document.getElementById("device-psdi").innerText = psdi;
     }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
+        uiStatusError(makeErrorMsg(error), false, 'liffGetPSDIService');
     });
 }
 
