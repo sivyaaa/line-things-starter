@@ -156,11 +156,11 @@ function liffCheckAvailablityAndDo(callbackIfAvailable) {
 }
 
 function liffRequestDevice() {
-    liff.bluetooth.requestDevice().then(device => {
-        liffConnectToDevice(device);
-    }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false, 'liffRequestDevice');
-    });
+    // liff.bluetooth.requestDevice().then(device => {
+    //     liffConnectToDevice(device);
+    // }).catch(error => {
+    //     uiStatusError(makeErrorMsg(error), false, 'liffRequestDevice');
+    // });
 }
 
 function liffConnectToDevice(device) {
