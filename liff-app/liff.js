@@ -17,7 +17,7 @@ let clickCount = 0;
 // -------------- //
 
 window.onload = () => {
-    initializeApp();
+    // initializeApp();
 };
 
 // ----------------- //
@@ -265,6 +265,22 @@ function liffToggleDeviceLedState(state) {
     // off: 0x00
     window.ledCharacteristic.writeValue(
         state ? new Uint8Array([0x01]) : new Uint8Array([0x00])
+    ).catch(error => {
+        uiStatusError(makeErrorMsg(error), false);
+    });
+}
+
+function print_1() {
+    window.ledCharacteristic.writeValue(
+        new Uint8Array([0x01])
+    ).catch(error => {
+        uiStatusError(makeErrorMsg(error), false);
+    });
+}
+
+function print_2() {
+    window.ledCharacteristic.writeValue(
+        new Uint8Array([0x02])
     ).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
