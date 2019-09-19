@@ -17,7 +17,7 @@ let clickCount = 0;
 // -------------- //
 
 window.onload = () => {
-    // initializeApp();
+    initializeApp();
 };
 
 // ----------------- //
