@@ -77,9 +77,9 @@ function uiToggleDeviceConnected(connected) {
         // Show status connected
         elStatus.classList.remove("inactive");
         elStatus.classList.add("success");
-        elStatus.innerText = "Device connected";
+        // elStatus.innerText = "Device connected";
         // Show controls
-        elControls.classList.remove("hidden");
+        // elControls.classList.remove("hidden");
     } else {
         // Show loading animation
         uiToggleLoadingAnimation(true);
@@ -88,7 +88,7 @@ function uiToggleDeviceConnected(connected) {
         elStatus.classList.add("inactive");
         elStatus.innerText = "Device disconnected";
         // Hide controls
-        elControls.classList.add("hidden");
+        // elControls.classList.add("hidden");
     }
 }
 
@@ -166,6 +166,7 @@ function liffRequestDevice() {
 function liffConnectToDevice(device) {
     device.gatt.connect().then(() => {
         document.getElementById("device-name").innerText = device.name;
+        document.getElementById("status").innerText = device.name;
         document.getElementById("device-id").innerText = device.id;
 
         // Show status connected
