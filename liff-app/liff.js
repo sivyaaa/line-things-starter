@@ -14,7 +14,7 @@ let clickCount = 0;
 
 let printbuf = [];
 let interval = null;
-const sendInterval = 60; //PRIMAX暂时使用这个参数writeDataDemoInterval,v14版本后由38=>30
+const sendInterval = 20; //PRIMAX暂时使用这个参数writeDataDemoInterval,v14版本后由38=>30
 const sendPackage = 20;
 let printCnt = 0;
 
