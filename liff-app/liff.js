@@ -23,8 +23,23 @@ let printCnt = 0;
 // -------------- //
 
 window.onload = () => {
+    initVConsole();
     initializeApp();
 };
+
+// Initialize vConsole
+function initVConsole() {
+    window.vConsole = new window.VConsole({
+        defaultPlugins: ['system', 'network', 'element', 'storage'],
+        maxLogNumber: 1000,
+        onReady: function() {
+            console.log('vConsole is ready.');
+        },
+        onClearLog: function() {
+            console.log('on clearLog');
+        }
+    });
+}
 
 // ----------------- //
 // Handler functions //
