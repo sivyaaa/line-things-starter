@@ -12,7 +12,7 @@ const PSDI_CHARACTERISTIC_UUID  = '26e2b12b-85f0-4f3f-9fdd-91d114270e6e';
 let ledState = false; // true: LED on, false: LED off
 let clickCount = 0;
 
-let printbuffer = [];
+let printbuf = [];
 let interval = null;
 const sendInterval = 30; //PRIMAX暂时使用这个参数writeDataDemoInterval,v14版本后由38=>30
 const sendPackage = 20;
@@ -297,6 +297,12 @@ function print_2() {
     });
 }
 
+function sendData(dataArr, callBack) {
+    interval = null;
+    printbuf = dataArr;
+    interval = setInterval(writeDataDemoInterval, sendInterval, callBack);
+}
+
 function writeTransferData(buffer, callBack) {
     window.ledCharacteristic.writeValue(
         new Uint8Array(buffer)
@@ -309,12 +315,6 @@ function writeTransferData(buffer, callBack) {
         uiStatusError(makeErrorMsg(error), false);
     });
   }
-
-function sendData(dataArr, callBack) {
-    interval = null;
-    printbuffer = dataArr;
-    interval = setInterval(writeDataDemoInterval, sendInterval, callBack);
-}
 
 //setinterval发送
 function writeDataDemoInterval(callBack) {
