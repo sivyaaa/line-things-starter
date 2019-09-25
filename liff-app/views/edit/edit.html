@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- <script src=" https://d.line-scdn.net/liff/1.0/sdk.js"></script> -->
+    <script src="./vconsole.min.js"></script>
+    <script src="./edit.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../common.css" />
+    <link rel="stylesheet" type="text/css" href="./edit.css" />
+    <title>Edit</title>
+  </head>
+
+  <body>
+    <!-- Title -->
+    <div class="fixed-top" style="background-color: white;">
+      <div class="blank_space"></div>
+      <h2>Jmodel Demo</h2>
+      <p class="title">ver0.0.86</p>
+    </div>
+    <div class="container">
+      <div class="blank_space" style="height: 230px;"></div>
+      <div class="canvas_container">
+        <div class="bg_canvas">
+          <canvas id="myCanvas" class="canvas"></canvas>
+        </div>
+      </div>
+      <div class="fixed-bottom" style="bottom: 20px;">
+        <div class="input-group-sm mb-3" style="display: inline-block;width: 90%;text-align: justify;">
+          <input type="text" id="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="50" placeholder="请输入文字" >
+        </div>
+        <div style="width: 90%;display: inline-block;text-align: center;">
+          <button type="button" class="btn btn-sm btn-outline-info rounded-pill px-3 font-weight-bold" style=" background-color: white;height: 90%;" onclick="draw()">Draw</button>
+          <button type="button" class="btn btn-sm btn-info rounded-pill px-3 font-weight-bold" style="height: 90%;" onclick="print()">Print</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

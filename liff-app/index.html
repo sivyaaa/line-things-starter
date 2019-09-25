@@ -4,21 +4,23 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <script src=" https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <!-- <script src=" https://d.line-scdn.net/liff/1.0/sdk.js"></script> -->
     <script src="./vconsole.min.js"></script>
     <script src="./liff.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./common.css" />
     <link rel="stylesheet" type="text/css" href="./liff.css" />
     <title>Jmodel Demo</title>
   </head>
 
   <body>
+    <div class="blank_space"></div>
     <!-- Title -->
     <h2>Jmodel Demo</h2>
-    <p>ver0.0.86</p>
+    <p class="title">ver0.0.87</p>
     <hr />
-    <p>
+    <p class="title">
       <img id="loading-animation" class="" src="loading.gif" height="14px" />
       <span id="status" class="inactive">Device disconnected</span>
     </p>
@@ -51,40 +53,11 @@
               <button type="button" onclick="print_2()" class="btn btn-sm btn-info rounded-pill px-3 font-weight-bold" style="height: 90%;">打印</button>
             </div>
           </div>
-        </div>
+      </div>
+      <div class="blank_space"></div>
     </div>
-    <div id="controls" class="hidden">
-      <!-- Device Info Table -->
-      <table class="device-info-table">
-        <tr>
-          <th class="device-info-cell device-info-key">Name</th>
-          <td class="device-info-cell device-info-val" id="device-name"></td>
-        </tr>
-        <tr>
-          <th class="device-info-cell device-info-key">ID</th>
-          <td class="device-info-cell device-info-val" id="device-id"></td>
-        </tr>
-        <tr>
-          <th class="device-info-cell device-info-key">PSDI</th>
-          <td class="device-info-cell device-info-val" id="device-psdi"></td>
-        </tr>
-        <tr>
-          <th class="device-info-cell device-info-key">Button state</th>
-          <td class="device-info-cell device-info-val">
-            <button id="btn-state" class="btn btn-state" disabled>Released</button>
-          </td>
-        </tr>
-        <tr>
-          <th class="device-info-cell device-info-key">Click count</th>
-          <td class="device-info-cell device-info-val" id="click-count">0</td>
-        </tr>
-      </table>
-      <hr />
-      <!-- Toggle LED -->
-      <p>
-        <button id="btn-led-toggle" class="btn btn-led-toggle" onclick="handlerToggleLed()">Switch LED ON</button>
-      </p>
-      <hr />
+    <div class="fixed-bottom" style="bottom: 20px;">
+      <button type="button" onclick="window.location.href = './views/edit/edit.html'" class="btn btn-sm btn-outline-info rounded-pill px-5 font-weight-bold" style=" background-color: white;height: 90%;">编辑一个新标签</button>
     </div>
   </body>
 

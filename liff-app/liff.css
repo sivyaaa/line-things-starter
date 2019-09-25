@@ -1,14 +1,8 @@
-body,
-table {
+body {
   font-size: 14pt;
   font-family: "Montserrat", sans-serif;
   margin: 0pt;
   text-align: center;
-  padding-top: 18pt;
-}
-
-p {
-  padding: 0pt 14pt;
 }
 
 .hx-40 {
@@ -59,21 +53,6 @@ p {
   transform: translateY(4pt);
 }
 
-.inactive {
-  color: #6c757d; /* Gray */
-}
-
-.success {
-  color: #16c464; /* LINE Green */
-}
-
-.error {
-  color: #dc3545; /* Red */
-}
-
-.hidden {
-  display: none;
-}
 
 .device-info-table {
   width: 80%;

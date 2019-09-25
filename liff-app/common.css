@@ -1,0 +1,24 @@
+.inactive {
+  color: #6c757d; /* Gray */
+}
+
+.success {
+  color: #16c464; /* LINE Green */
+}
+
+.error {
+  color: #dc3545; /* Red */
+}
+
+.hidden {
+  display: none;
+}
+
+.title {
+  padding: 0pt 14pt;
+}
+
+.blank_space {
+    width: 100%;
+    height: 40px;
+  }
